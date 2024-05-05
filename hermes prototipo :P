@@ -1,0 +1,57 @@
+from tkinter import *
+
+class HERMES:
+    def __init__(self):
+        self.ventana = Tk()
+
+        #--------------------LOGO HERMES -----------------------------
+        img = PhotoImage(file="C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\erisfin.png")#no debe de pasar los 50x50 pixeles :C
+        self.ventana.iconphoto(False, img)
+        # -------------------- FONDO 1 ------------------------------
+        Fondo1 = PhotoImage(file= "C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\fondo1.png")
+        ancho = Fondo1.width()
+        alto = Fondo1.height()
+        print(ancho, alto)
+        background_label = Label(self.ventana, image=Fondo1)## poner la imagen de fondo
+        background_label.place(x=0, y=0, relwidth=1, relheight=1)# ponerla enmedio, pq? nose
+        self.ventana.geometry("{}x{}".format(ancho, alto))#ajustar el tamaño de la bentana
+
+
+        #--------------------BOTONES ----------------------
+        #APRENDER
+        ftApre = PhotoImage(file="C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\botonaprender.png")#Aqui se define que foto se vera, el 0 significa que se mostrara la foto 0 de la lista de self.menufotos(esta mero arriba), en este caso gato1.png
+        ftApre=ftApre.subsample(1,1)
+        btApre=Button(self.ventana,image=ftApre, command=self.aprender)
+        btApre.place(x=150,y=230)
+        #QUIZZ
+        ftQuzz = PhotoImage(file="C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\botonquizz.png")#Aqui se define que foto se vera, el 0 significa que se mostrara la foto 0 de la lista de self.menufotos(esta mero arriba), en este caso gato1.png
+        ftQuzz=ftQuzz.subsample(1,1)
+        btQuzz=Button(self.ventana,image=ftQuzz, command=self.quizz)
+        btQuzz.place(x=150,y=460)
+
+        
+
+
+
+        self.ventana.mainloop()# se pone al final
+
+    def aprender(self):#q pasa en aprender
+        self.aprem = Tk()
+        self.aprem.title("aprender")
+        print("aprender")
+        lol = Button(self.aprem, text="q pirulin", command=self.aprem.destroy, fg="red")
+        lol.pack()#para que se muestre
+        lol.place(x=50, y=50)
+        self.aprem.mainloop()
+
+
+    def quizz(self):
+        self.aprem = Tk()
+        self.aprem.title("aprender")
+        print("aprender")
+        lol = Button(self.aprem, text="bonyorno", command=self.aprem.destroy, fg="red")
+        lol.pack()#para que se muestre
+        lol.place(x=50, y=50)
+        self.aprem.mainloop()
+
+hermes = HERMES()
