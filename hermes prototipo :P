@@ -1,57 +1,61 @@
 from tkinter import *
-
+lol="C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\miau.jpg"
 class HERMES:
     def __init__(self):
+        #-------------------imagenes :CCCCCCCCC-----------------
         self.ventana = Tk()
+        self.ventana.title("HERMES")
+        self.img = PhotoImage(file="C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\erisfin.png")#no debe de pasar los 50x50 pixeles :C
+        self.Fondo1 = PhotoImage(file="C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\fondo1.png")
+        self.ftApre = PhotoImage(file="C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\botonaprender.png")#Aqui se define que foto se vera, el 0 significa que se mostrara la foto 0 de la lista de self.menufotos(esta mero arriba), en este caso gato1.png
+        self.ftQuzz = PhotoImage(file="C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\botonquizz.png")#Aqui se define que foto se vera, el 0 significa que se mostrara la foto 0 de la lista de self.menufotos(esta mero arriba), en este caso gato1.png
 
+    def princuipal(self):
         #--------------------LOGO HERMES -----------------------------
-        img = PhotoImage(file="C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\erisfin.png")#no debe de pasar los 50x50 pixeles :C
-        self.ventana.iconphoto(False, img)
+        self.ventana.iconphoto(False, self.img)
         # -------------------- FONDO 1 ------------------------------
-        Fondo1 = PhotoImage(file= "C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\fondo1.png")
-        ancho = Fondo1.width()
-        alto = Fondo1.height()
+        ancho = self.Fondo1.width()
+        alto = self.Fondo1.height()
         print(ancho, alto)
-        background_label = Label(self.ventana, image=Fondo1)## poner la imagen de fondo
+        background_label = Label(self.ventana, image=self.Fondo1)## poner la imagen de fondo
         background_label.place(x=0, y=0, relwidth=1, relheight=1)# ponerla enmedio, pq? nose
         self.ventana.geometry("{}x{}".format(ancho, alto))#ajustar el tamaño de la bentana
-
-
         #--------------------BOTONES ----------------------
         #APRENDER
-        ftApre = PhotoImage(file="C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\botonaprender.png")#Aqui se define que foto se vera, el 0 significa que se mostrara la foto 0 de la lista de self.menufotos(esta mero arriba), en este caso gato1.png
-        ftApre=ftApre.subsample(1,1)
-        btApre=Button(self.ventana,image=ftApre, command=self.aprender)
+        self.ftApre=self.ftApre.subsample(1,1)
+        btApre=Button(self.ventana,image=self.ftApre, command=self.cambioventana1)
         btApre.place(x=150,y=230)
         #QUIZZ
-        ftQuzz = PhotoImage(file="C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\botonquizz.png")#Aqui se define que foto se vera, el 0 significa que se mostrara la foto 0 de la lista de self.menufotos(esta mero arriba), en este caso gato1.png
-        ftQuzz=ftQuzz.subsample(1,1)
-        btQuzz=Button(self.ventana,image=ftQuzz, command=self.quizz)
+        self.ftQuzz=self.ftQuzz.subsample(1,1)
+        btQuzz=Button(self.ventana,image=self.ftQuzz, command=self.quizz)
         btQuzz.place(x=150,y=460)
-
-        
-
-
 
         self.ventana.mainloop()# se pone al final
 
-    def aprender(self):#q pasa en aprender
-        self.aprem = Tk()
-        self.aprem.title("aprender")
-        print("aprender")
-        lol = Button(self.aprem, text="q pirulin", command=self.aprem.destroy, fg="red")
-        lol.pack()#para que se muestre
-        lol.place(x=50, y=50)
-        self.aprem.mainloop()
+    def cambioventana1(self):
+        self.ventana.destroy()
+        command=self.aprender()
 
+
+
+    def aprender(self):
+        global lol
+        PhotoImage(lol)
+        self.aprem = Tk()
+        self.aprem.title("Aprender")
+        self.fondo2 = PhotoImage(file="C:\\Users\\vanne\\OneDrive\\Documentos\\Harkness\\asesorias\\hermes\\pes\\matenme.png")
+        self.ancho2 = self.fondo2.width()
+        self.alto2 = self.fondo2.height()
+        self.aprem.geometry("773x733")#ajustar el tamaño de la bentana
+        xdnt=Label(self.aprem, image=self.fondo2)
+        xdnt.place(x=0,y=0,relwidth=1, relheight=1)
+    
+        lol=lol.subsample(1,1)
+        xd=Button(self.aprem, image=lol, command=self.quizz)
+        xd.place(x=100,y=300)
 
     def quizz(self):
-        self.aprem = Tk()
-        self.aprem.title("aprender")
-        print("aprender")
-        lol = Button(self.aprem, text="bonyorno", command=self.aprem.destroy, fg="red")
-        lol.pack()#para que se muestre
-        lol.place(x=50, y=50)
-        self.aprem.mainloop()
+        print("ok")
 
 hermes = HERMES()
+hermes.princuipal()
